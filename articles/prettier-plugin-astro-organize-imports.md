@@ -97,7 +97,7 @@ https://github.com/simonhaenisch/prettier-plugin-organize-imports
 
 ##### `prettier-plugin-tailwindcss`
 
-Tailwind CSS 用のプラグインで、クラスをソートするものです。他の Prettier と互換性を持たせる方法を参考にしました。
+Tailwind CSS 用のプラグインで、クラスをソートするものです。他の Prettier プラグインと互換性を持たせる方法を参考にしました。
 
 https://github.com/tailwindlabs/prettier-plugin-tailwindcss
 
