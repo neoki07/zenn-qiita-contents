@@ -2,7 +2,7 @@
 title: "Astroファイルのimport文をフォーマットするPrettierプラグインを作りました"
 emoji: "🧑‍🚀"
 type: "tech"
-topics: ["prettier", "astro", "typescript", "npm"]
+topics: ["prettier", "astro", "npm"]
 published: false
 ---
 
@@ -92,13 +92,19 @@ Prettier は公式では Astro ファイルをサポートしていないため�
 
 `.js`, `.jsx`, `.ts`, `.tsx`, `.vue`ファイルの import 文をフォーマットするプラグインです。import 文をフォーマットする処理を実装する上で参考にしました。
 
+https://github.com/simonhaenisch/prettier-plugin-organize-imports
+
 ##### `prettier-plugin-tailwindcss`
 
 Tailwind CSS 用のプラグインで、クラスをソートするものです。他の Prettier と互換性を持たせる方法を参考にしました。
 
+https://github.com/tailwindlabs/prettier-plugin-tailwindcss
+
 ##### `prettier-plugin-astro`
 
 Astro ファイルをフォーマットする公式プラグインです。
+
+https://github.com/withastro/prettier-plugin-astro
 
 # さいごに
 
