@@ -95,13 +95,13 @@ Prettier は公式では Astro ファイルをサポートしていないため�
 
 https://github.com/simonhaenisch/prettier-plugin-organize-imports
 
-##### `prettier-plugin-tailwindcss`
+#### `prettier-plugin-tailwindcss`
 
 Tailwind CSS 用のプラグインで、クラスをソートするものです。他の Prettier プラグインと互換性を持たせる方法を参考にしました。
 
 https://github.com/tailwindlabs/prettier-plugin-tailwindcss
 
-##### `prettier-plugin-astro`
+#### `prettier-plugin-astro`
 
 Astro ファイルをフォーマットする公式プラグインです。
 
