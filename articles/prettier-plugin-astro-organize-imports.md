@@ -73,7 +73,7 @@ Prettier は公式では Astro ファイルをサポートしていないため�
   "plugins": [
     "prettier-plugin-astro",
     "prettier-plugin-tailwindcss",
-    "prettier-plugin-astro-organize-imports" // 最後に読み込む
+    "prettier-plugin-astro-organize-imports"
   ],
   "pluginSearchDirs": false,
   "overrides": [
@@ -89,7 +89,7 @@ Prettier は公式では Astro ファイルをサポートしていないため�
 
 # 参考にした Prettier プラグイン
 
-##### `prettier-plugin-organize-imports`
+#### `prettier-plugin-organize-imports`
 
 `.js`, `.jsx`, `.ts`, `.tsx`, `.vue`ファイルの import 文をフォーマットするプラグインです。import 文をフォーマットする処理を実装する上で参考にしました。
 
@@ -111,6 +111,6 @@ https://github.com/withastro/prettier-plugin-astro
 
 Astro ファイルの import 文をフォーマットする Prettier プラグインである`prettier-plugin-astro-organize-imports`を紹介しました。
 
-Astro を使用して開発している方は、ぜひ試していただけると嬉しいです。
+Astro で開発をしている方は、ぜひ試していただけると嬉しいです。
 
 https://github.com/ot07/prettier-plugin-astro-organize-imports
