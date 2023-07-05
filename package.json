@@ -1,5 +1,5 @@
 {
-  "name": "zenn-contents",
+  "name": "zenn-qiita-content",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@qiita/qiita-cli": "^0.3.0",
     "zenn-cli": "^0.1.144"
   }
 }
