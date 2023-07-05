@@ -1,3 +1,4 @@
-# Zenn CLI
+# Zenn Qiita Content
 
-* [📘 How to use](https://zenn.dev/zenn/articles/zenn-cli-guide)
+- Zenn: https://zenn.dev/ot07
+- Qiita: https://qiita.com/ot07
