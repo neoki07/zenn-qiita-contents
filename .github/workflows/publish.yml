@@ -15,9 +15,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
-env:
-  QIITA_CLI_ITEMS_ROOT: qiita
-
 jobs:
   publish_articles:
     runs-on: ubuntu-latest
@@ -26,6 +23,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: increments/qiita-cli/actions/publish@v0
+      - uses: ./.github/actions/qiita-publish
         with:
           qiita-token: ${{ secrets.QIITA_TOKEN }}
+          rootdir: ./qiita
