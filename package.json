@@ -12,8 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "@qiita/qiita-cli": "^0.3.0",
+    "@types/git-url-parse": "^9.0.1",
+    "@types/js-yaml": "^4.0.5",
     "@types/node": "^20.4.0",
     "@types/yargs": "^17.0.24",
+    "git-url-parse": "^13.1.0",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "yargs": "^17.7.2",
