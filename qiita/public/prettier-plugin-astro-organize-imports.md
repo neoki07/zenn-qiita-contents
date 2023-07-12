@@ -5,7 +5,7 @@ tags:
   - astro
   - prettier
 private: false
-updated_at: '2023-07-06T21:00:02+09:00'
+updated_at: "2023-07-06T21:00:02+09:00"
 id: 665dd6b781ec6eb49975
 organization_url_name: null
 ---
@@ -22,7 +22,7 @@ https://www.npmjs.com/package/prettier-plugin-astro-organize-imports
 
 このプラグインを使用すると、以下のように import 文がソートされます。
 
-![](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/322637/76a981ec-89df-4ce8-5c06-452c2ff2ecc6.gif)
+![](https://raw.githubusercontent.com/ot07/zenn-qiita-content/main/images/prettier-plugin-astro-organize-imports/demo.gif)
 
 # インストール方法
 
