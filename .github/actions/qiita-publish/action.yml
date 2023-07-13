@@ -1,21 +1,21 @@
-name: "Publish articles to Qiita"
-description: "Publish articles to Qiita using qiita-cli"
-author: "Qiita Inc."
+name: 'Publish articles to Qiita'
+description: 'Publish articles to Qiita using qiita-cli'
+author: 'Qiita Inc.'
 
 inputs:
   qiita-token:
     required: true
-    description: "Qiita API token"
+    description: 'Qiita API token'
   rootdir:
     required: false
-    description: "Root directory of qiita articles"
+    description: 'Root directory of qiita articles'
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - uses: actions/setup-node@v3
       with:
-        node-version: "18.16.0"
+        node-version: '18.16.0'
     - name: Install qiita-cli
       run: npm install -g @qiita/qiita-cli@v0.3.0
       shell: bash

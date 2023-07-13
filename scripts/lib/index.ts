@@ -1,1 +1,1 @@
-export { zennMarkdownToQiitaMarkdown } from "./zenn-markdown-to-qiita-markdown";
+export { zennMarkdownToQiitaMarkdown } from './zenn-markdown-to-qiita-markdown'
