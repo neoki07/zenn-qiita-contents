@@ -22,7 +22,7 @@ https://www.npmjs.com/package/prettier-plugin-astro-organize-imports
 
 このプラグインを使用すると、以下のように import 文がソートされます。
 
-![](https://raw.githubusercontent.com/ot07/zenn-qiita-content/main/images/prettier-plugin-astro-organize-imports/demo.gif)
+![](https://raw.githubusercontent.com/ot07/zenn-qiita-contents/main/images/prettier-plugin-astro-organize-imports/demo.gif)
 
 # インストール方法
 
