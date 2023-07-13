@@ -33,8 +33,8 @@ runs:
           git add public/*
         fi
         if ! git diff --staged --exit-code --quiet; then
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'ot07'
+          git config --global user.email 'ot07neoki@gmail.com'
           git commit -m 'Updated by qiita-cli'
           git push
         fi
