@@ -27,7 +27,7 @@ runs:
         QIITA_TOKEN: ${{ inputs.qiita-token }}
         QIITA_CLI_ITEMS_ROOT: ${{ inputs.rootdir }}
       shell: bash
-    - name: Commit and create PR
+    - name: Commit
       run: |
         if [[ -n "${{ inputs.rootdir }}" ]]; then
           git add ${{ inputs.rootdir }}/public/*
@@ -37,11 +37,11 @@ runs:
         if ! git diff --staged --exit-code --quiet; then
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git checkout -b changes-${{ github.run_id }}
           git commit -m 'Updated by qiita-cli'
-          git push origin changes-${{ github.run_id }}
-          gh pr create --title "Update from qiita-cli" --body "This PR is automatically created by GitHub Actions." --base main
         fi
       shell: bash
-      env:
-        GH_TOKEN: ${{ inputs.github-token }}
+    - name: Push
+      uses: CasperWA/push-protected@v2
+      with:
+        token: ${{ inputs.github-token }}
+        branch: main
