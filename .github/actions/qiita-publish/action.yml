@@ -24,7 +24,7 @@ runs:
         QIITA_TOKEN: ${{ inputs.qiita-token }}
         QIITA_CLI_ITEMS_ROOT: ${{ inputs.rootdir }}
       shell: bash
-    - name: Commit and push diff # Not executed recursively even if `push` is triggered. See https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow
+    - name: Commit and create PR
       run: |
         if [[ -n "${{ inputs.rootdir }}" ]]; then
           git add ${{ inputs.rootdir }}/public/*
@@ -32,9 +32,10 @@ runs:
           git add public/*
         fi
         if ! git diff --staged --exit-code --quiet; then
-          git config --global user.name 'ot07'
-          git config --global user.email 'ot07neoki@gmail.com'
-          git commit -m 'updated by qiita-cli'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -b changes-${{ github.run_id }}
+          git commit -m 'Updated by qiita-cli'
           git push origin changes-${{ github.run_id }}
           gh pr create --title "Update from qiita-cli" --body "This PR is automatically created by GitHub Actions." --base main
         fi
