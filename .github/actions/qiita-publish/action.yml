@@ -5,11 +5,12 @@ inputs:
   qiita-token:
     required: true
     description: 'Qiita API token'
+  github-token:
+    required: true
+    description: 'GitHub token'
   rootdir:
     required: false
     description: 'Root directory of qiita articles'
-
-
 
 runs:
   using: 'composite'
@@ -43,4 +44,4 @@ runs:
         fi
       shell: bash
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ inputs.github-token }}
