@@ -9,6 +9,8 @@ inputs:
     required: false
     description: 'Root directory of qiita articles'
 
+
+
 runs:
   using: 'composite'
   steps:
@@ -40,3 +42,5 @@ runs:
           gh pr create --title "Update from qiita-cli" --body "This PR is automatically created by GitHub Actions." --base main
         fi
       shell: bash
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
