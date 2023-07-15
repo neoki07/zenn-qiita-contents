@@ -5,7 +5,7 @@ tags:
   - prettier
   - astro
   - npm
-updated_at: '2023-07-06T21:00:02+09:00'
+updated_at: '2023-07-14T01:58:21+09:00'
 id: 665dd6b781ec6eb49975
 organization_url_name: null
 ---
@@ -14,8 +14,7 @@ organization_url_name: null
 
 Astroファイルのimport文をフォーマットするPrettierプラグインを作りました。
 
-普段、TypeScriptファイルなどのimport文をフォマットするために[prettier-plugin-organize-imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports)というPrettierプラグインを使用しています。
-Astroファイルに対しても同様の機能がほしいと思ったのがきっかけで作成しました。
+普段、TypeScriptファイルなどのimport文をフォマットするために[prettier-plugin-organize-imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports)というPrettierプラグインを使用しています。Astroファイルに対しても同様の機能がほしいと思ったのがきっかけで作成しました。
 
 https://github.com/ot07/prettier-plugin-astro-organize-imports
 

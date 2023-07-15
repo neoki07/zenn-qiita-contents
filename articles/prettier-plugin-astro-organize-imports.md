@@ -10,8 +10,7 @@ published: true
 
 Astroファイルのimport文をフォーマットするPrettierプラグインを作りました。
 
-普段、TypeScriptファイルなどのimport文をフォマットするために[prettier-plugin-organize-imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports)というPrettierプラグインを使用しています。
-Astroファイルに対しても同様の機能がほしいと思ったのがきっかけで作成しました。
+普段、TypeScriptファイルなどのimport文をフォマットするために[prettier-plugin-organize-imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports)というPrettierプラグインを使用しています。Astroファイルに対しても同様の機能がほしいと思ったのがきっかけで作成しました。
 
 https://github.com/ot07/prettier-plugin-astro-organize-imports
 
