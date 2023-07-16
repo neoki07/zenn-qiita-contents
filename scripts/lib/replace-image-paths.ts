@@ -28,6 +28,16 @@ export function replaceImagePaths(inputContent: string): string {
   const { owner, repo, branch } = getRepoInfo()
   const githubRawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}`
 
-  // Replace local image paths with remote GitHub URLs
-  return inputContent.replace(/!\[\]\((\/.*?)\)/g, `![](${githubRawUrl}$1)`)
+  // Split by code blocks
+  const parts = inputContent.split(/(```.*?```)/gs)
+
+  // Only replace image paths outside of code blocks
+  for (let i = 0; i < parts.length; i++) {
+    if (!parts[i].startsWith('```')) {
+      parts[i] = parts[i].replace(/!\[\]\((\/.*?)\)/g, `![](${githubRawUrl}$1)`)
+    }
+  }
+
+  // Rejoin the markdown
+  return parts.join('')
 }

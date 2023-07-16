@@ -1,11 +1,11 @@
 ---
 title: Zenn / Qiitaに投稿する同じ記事を一元管理するためのGitHubリポジトリを作りました
-tags:
-  - Qiita
-  - GitHub
-  - Zenn
-  - ZennCLI
 private: true
+tags:
+  - zenn
+  - zenncli
+  - qiita
+  - github
 updated_at: '2023-07-16T14:17:21+09:00'
 id: 448b304bb9df66e545f8
 organization_url_name: null
@@ -178,8 +178,8 @@ organization_url_name: null
 ```md
 # `/images`ディレクトリ内の画像パスを指定する （Zenn用の指定方法）
 
-![](https://raw.githubusercontent.com/ot07/zenn-qiita-contents/main/images/example-image1.png)
-![](https://raw.githubusercontent.com/ot07/zenn-qiita-contents/main/images/example-article-1/image1.png)
+![](/images/example-image1.png)
+![](/images/example-article-1/image1.png)
 
 # GitHubリポジトリにアップロードした画像パスを指定する （Qiita用の指定方法）
 
