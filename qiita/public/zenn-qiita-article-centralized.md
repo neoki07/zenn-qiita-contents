@@ -1,11 +1,11 @@
 ---
 title: Zenn / Qiitaに投稿する同じ記事を一元管理するためのGitHubリポジトリを作りました
-tags:
-  - Qiita
-  - GitHub
-  - Zenn
-  - ZennCLI
 private: true
+tags:
+  - zenn
+  - zenncli
+  - qiita
+  - github
 updated_at: '2023-07-16T14:30:10+09:00'
 id: 448b304bb9df66e545f8
 organization_url_name: null
@@ -33,16 +33,20 @@ https://github.com/increments/qiita-cli/
 私は記事の投稿を始めたばかりで、今回は私にとって必要最低限の仕組みしか作っていません。そのため、これまでにたくさんの記事を投稿されている方にとっては不十分な点があると思いますが、あらかじめご了承ください。
 :::
 
+今回の実装内容は、以下のリポジトリからご覧いただけます。
+
+https://github.com/ot07/zenn-qiita-contents
+
 ## 今回作成した仕組み
 
 私が作成した仕組みの概要は次のとおりです。Zennの記事からQiitaの記事を自動生成することで、できるだけ二重管理を避けるようにしています。
 
-- Zenn / Qiitaの記事を別々のファイルとして管理する
+- Zenn / Qiitaの記事を別のファイルとして管理する
 - Zennの記事 → Qiitaの記事に変換するスクリプトを作成する
 
-### Zenn / Qiitaの記事を別々のファイルとして管理する
+### Zenn / Qiitaの記事を別のファイルとして管理する
 
-ZennとQiitaのマークダウン記法には、それぞれに独自の記法があります。そのため、同一の内容であっても、記事を同じファイルで管理することはできません。そこで、別のディレクトリ内に、別ファイルとして管理することにします。
+ZennとQiitaのマークダウン記法には、それぞれに独自の記法があります。そのため、同一の内容であっても、記事を同じファイルで管理することはできません。そこで、別ファイルとして管理することにします。
 
 Zennについては、私が調べた限りではルートディレクトリで管理する以外の方法はないようです。一方で、Qiitaについては、少し工夫する必要がありますが、ルートディレクトリ以外で管理することができます。
 
@@ -61,63 +65,35 @@ Zennについては、私が調べた限りではルートディレクトリで�
 └── ....
 ```
 
+それぞれの管理ディレクトリでZenn CLI / Qiita CLIのセットアップコマンドを実行して、必要なファイルを作成しています。
+
 ただし、これだと二重管理になってしまうので、後述するスクリプトを使って、Zennの記事からQiitaの記事を自動生成できるようにします。
 
 ### Zennの記事 → Qiitaの記事に変換するスクリプトを作成する
 
-以下のようなスクリプトを作成します。
+以下のようなスクリプトを作成します（分かりやすさのため、重要ではない部分は簡略化しています）。
 
 ```ts
-import { readFileSync, writeFileSync } from 'fs'
-import yargs from 'yargs'
 import { zennMarkdownToQiitaMarkdown } from './lib'
 
-const argv = yargs
-  .command(
-    '* <inputPath> [outputPath]',
-    'convert Zenn markdown to Qiita markdown',
-  )
-  .positional('inputPath', {
-    describe: 'Zenn markdown filepath to convert',
-    type: 'string',
-    demandOption: true,
-  })
-  .positional('outputPath', {
-    describe: 'Filepath to output Qiita markdown',
-    type: 'string',
-    demandOption: false,
-  })
-  .help()
-  .alias('help', 'h')
-  .parseSync()
-
-const { inputPath, outputPath } = argv
-
 function main() {
-  try {
-    const inputContent = readFileSync(inputPath, 'utf8')
+  // Zennの記事を読み込む
+  const inputContent = readFileSync(inputPath, 'utf8')
 
-    // Zennのマークダウン記法をQiitaのマークダウン記法に変換する
-    const outputContent = zennMarkdownToQiitaMarkdown(inputContent, outputPath)
+  // Zennのマークダウン記法をQiitaのマークダウン記法に変換する
+  const outputContent = zennMarkdownToQiitaMarkdown(
+    inputContent,
+    outputFilepath,
+  )
 
-    if (outputPath) {
-      writeFileSync(outputPath, outputContent, 'utf8')
-      console.log(`Output written to ${outputPath}`)
-    } else {
-      console.log(outputContent)
-    }
-  } catch (err) {
-    console.error('Error processing:', err)
-  }
+  // 変換結果をファイルに書き出す
+  writeFileSync(outputPath, outputContent, 'utf8')
 }
 
 main()
 ```
 
-このスクリプトは、以下のような処理を行います。
-
-- コマンドライン引数として、Zennの記事のファイルパスと、書き出すQiitaの記事のファイルパスを受け取る
-- `zennMarkdownToQiitaMarkdown`関数を呼び出し、Zennのマークダウン記法をQiitaのマークダウン記法に変換する
+このスクリプトは、`zennMarkdownToQiitaMarkdown`関数を呼び出し、Zennのマークダウン記法をQiitaのマークダウン記法に変換します。
 
 `zennMarkdownToQiitaMarkdown`関数は、次のように実装します。
 
@@ -136,7 +112,7 @@ export function zennMarkdownToQiitaMarkdown(
     replaceMessageToNote,
   ]
 
-  let output = inputContent
+  const output = inputContent
   for (const fn of pipeline) {
     output = fn(output)
   }
@@ -197,7 +173,7 @@ organization_url_name: null
 
 これらの仕組みを使うことで、できるだけ二重管理を避けつつ、ZennとQiitaの記事を一つのGitHubリポジトリで一元管理できるようになりました。変更をプッシュすると、両方の記事が自動的に更新されます。
 
-細かい実装は、以下のリポジトリからご覧いただけます。
+今回作成した仕組みは、以下のGitHubリポジトリで公開しています。簡略化していないスクリプトの全体像や、それぞれの変換用の関数の実装などをご覧いただけます。
 
 https://github.com/ot07/zenn-qiita-contents
 
