@@ -6,7 +6,7 @@ topics: ['prettier', 'astro', 'npm']
 published: true
 ---
 
-# はじめに
+## はじめに
 
 Astroファイルのimport文をフォーマットするPrettierプラグインを作りました。
 
@@ -20,7 +20,7 @@ https://www.npmjs.com/package/prettier-plugin-astro-organize-imports
 
 ![](/images/prettier-plugin-astro-organize-imports/demo.gif)
 
-# インストール方法
+## インストール方法
 
 まずは、依存関係のあるパッケージとともに、プラグインをインストールします。
 
@@ -56,7 +56,7 @@ Prettierは公式ではAstroファイルをサポートしていないため、`
 `prettier-plugin-astro`などの他のAstroファイル用プラグインがインストールされている場合、プラグインの自動ロード機能によってエラーが発生する可能性があります。そのような問題を避けるためには、後述の**プラグインの自動ロードを無効にする**設定を行ってください。
 :::
 
-# 他のPrettierプラグインとの互換性
+## 他のPrettierプラグインとの互換性
 
 他にも、Astroファイルに対して機能するPrettierプラグインとして、以下のものがあります。
 
@@ -87,7 +87,7 @@ Prettierは公式ではAstroファイルをサポートしていないため、`
 }
 ```
 
-# 参考にしたPrettierプラグイン
+## 参考にしたPrettierプラグイン
 
 #### `prettier-plugin-organize-imports`
 
@@ -107,7 +107,7 @@ Astroファイルをフォーマットする公式プラグインです。
 
 https://github.com/withastro/prettier-plugin-astro
 
-# さいごに
+## さいごに
 
 Astroファイルのimport文をフォーマットするPrettierプラグインである`prettier-plugin-astro-organize-imports`を紹介しました。
 
