@@ -1,8 +1,9 @@
-import { readFileSync, writeFileSync } from 'fs'
+import { readFileSync, statSync, writeFileSync } from 'fs'
 import yargs from 'yargs'
 import { zennMarkdownToQiitaMarkdown } from './lib'
+import { basename, join } from 'path'
 
-const argv = yargs
+const { inputPath, outputPath } = yargs
   .command(
     '* <inputPath> [outputPath]',
     'convert Zenn markdown to Qiita markdown',
@@ -13,27 +14,31 @@ const argv = yargs
     demandOption: true,
   })
   .positional('outputPath', {
-    describe: 'Filepath to output Qiita markdown',
+    describe: 'Path to output Qiita markdown',
     type: 'string',
-    demandOption: false,
+    demandOption: true,
   })
   .help()
   .alias('help', 'h')
   .parseSync()
 
-const { inputPath, outputPath } = argv
-
 function main() {
   try {
     const inputContent = readFileSync(inputPath, 'utf8')
-    const outputContent = zennMarkdownToQiitaMarkdown(inputContent, outputPath)
 
-    if (outputPath) {
-      writeFileSync(outputPath, outputContent, 'utf8')
-      console.log(`Output written to ${outputPath}`)
-    } else {
-      console.log(outputContent)
-    }
+    const isDirectory = statSync(outputPath).isDirectory()
+    const outputFilepath = isDirectory
+      ? join(outputPath, basename(inputPath))
+      : outputPath
+
+    const outputContent = zennMarkdownToQiitaMarkdown(
+      inputContent,
+      outputFilepath,
+    )
+
+    writeFileSync(outputFilepath, outputContent, 'utf8')
+
+    console.log(`Output written to ${outputFilepath}`)
   } catch (err) {
     console.error('Error processing:', err)
   }
