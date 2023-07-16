@@ -1,11 +1,11 @@
 ---
 title: Astroファイルのimport文をフォーマットするPrettierプラグインを作りました
-private: false
 tags:
-  - prettier
-  - astro
   - npm
-updated_at: '2023-07-14T01:58:21+09:00'
+  - astro
+  - prettier
+private: false
+updated_at: '2023-07-15T15:16:03+09:00'
 id: 665dd6b781ec6eb49975
 organization_url_name: null
 ---
