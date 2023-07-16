@@ -28,30 +28,29 @@ const { inputPath, outputPath, watch } = yargs
   .alias('help', 'h')
   .parseSync()
 
+function convertAndWrite(inputPath: string, outputPath: string) {
+  const inputContent = readFileSync(inputPath, 'utf8')
+  const outputContent = zennMarkdownToQiitaMarkdown(inputContent, outputPath)
+  writeFileSync(outputPath, outputContent, 'utf8')
+}
+
 function main() {
   try {
-    const inputContent = readFileSync(inputPath, 'utf8')
-
     const isDirectory = statSync(outputPath).isDirectory()
     const outputFilepath = isDirectory
       ? join(outputPath, basename(inputPath))
       : outputPath
 
-    const outputContent = zennMarkdownToQiitaMarkdown(
-      inputContent,
-      outputFilepath,
-    )
+    convertAndWrite(inputPath, outputFilepath)
+    console.log(`Output written to ${outputFilepath}`)
 
     if (watch) {
       console.log('Watching for changes...')
       watchFile(inputPath, { persistent: true, interval: 1000 }, () => {
         console.log('Input file changed. Converting and writing output...')
-        writeFileSync(outputFilepath, outputContent, 'utf8')
+        convertAndWrite(inputPath, outputFilepath)
         console.log(`Output written to ${outputFilepath}`)
       })
-    } else {
-      writeFileSync(outputFilepath, outputContent, 'utf8')
-      console.log(`Output written to ${outputFilepath}`)
     }
   } catch (err) {
     console.error('Error processing:', err)

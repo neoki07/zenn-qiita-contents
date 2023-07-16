@@ -3,34 +3,36 @@ import matter from 'gray-matter'
 import yaml from 'js-yaml'
 
 export function convertFrontmatter(outputPath?: string) {
-  return function _convertFrontmatter(inputContent: string): string {
-    let { data, content } = matter(inputContent)
+  return function _convertFrontmatter(inputContent: string) {
+    const { data, content } = matter(inputContent)
+    const dataCloned = { ...data }
 
     // Remove unnecessary fields
-    delete data.emoji
-    delete data.type
+    delete dataCloned.emoji
+    delete dataCloned.type
 
     // Convert published to private (reversed)
-    data.private = !data.published
-    delete data.published
+    dataCloned.private = !dataCloned.published
+    delete dataCloned.published
 
     // Convert topics to tags
-    data.tags = data.topics
-    delete data.topics
+    dataCloned.tags = dataCloned.topics
+    delete dataCloned.topics
 
     // Add new fields
     if (outputPath && existsSync(outputPath)) {
-      let existingData = matter(readFileSync(outputPath, 'utf8')).data
-      data.updated_at = existingData.updated_at || null
-      data.id = existingData.id || null
-      data.organization_url_name = existingData.organization_url_name || null
+      const existingData = matter(readFileSync(outputPath, 'utf8')).data
+      dataCloned.updated_at = existingData.updated_at || null
+      dataCloned.id = existingData.id || null
+      dataCloned.organization_url_name =
+        existingData.organization_url_name || null
     } else {
-      data.updated_at = null
-      data.id = null
-      data.organization_url_name = null
+      dataCloned.updated_at = null
+      dataCloned.id = null
+      dataCloned.organization_url_name = null
     }
 
-    let frontmatter = yaml.dump(data)
+    const frontmatter = yaml.dump(dataCloned)
     return `---\n${frontmatter}---\n${content}`
   }
 }
