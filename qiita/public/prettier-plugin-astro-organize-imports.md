@@ -5,7 +5,7 @@ tags:
   - astro
   - prettier
 private: false
-updated_at: '2023-07-15T15:16:03+09:00'
+updated_at: '2023-07-16T14:17:20+09:00'
 id: 665dd6b781ec6eb49975
 organization_url_name: null
 ---
