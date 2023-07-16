@@ -1,9 +1,9 @@
-import { readFileSync, statSync, writeFileSync } from 'fs'
+import { readFileSync, statSync, watchFile, writeFileSync } from 'fs'
 import yargs from 'yargs'
 import { zennMarkdownToQiitaMarkdown } from './lib'
 import { basename, join } from 'path'
 
-const { inputPath, outputPath } = yargs
+const { inputPath, outputPath, watch } = yargs
   .command(
     '* <inputPath> [outputPath]',
     'convert Zenn markdown to Qiita markdown',
@@ -17,6 +17,12 @@ const { inputPath, outputPath } = yargs
     describe: 'Path to output Qiita markdown',
     type: 'string',
     demandOption: true,
+  })
+  .option('watch', {
+    describe: 'Watch for changes in the input file',
+    alias: 'w',
+    type: 'boolean',
+    default: false,
   })
   .help()
   .alias('help', 'h')
@@ -36,9 +42,17 @@ function main() {
       outputFilepath,
     )
 
-    writeFileSync(outputFilepath, outputContent, 'utf8')
-
-    console.log(`Output written to ${outputFilepath}`)
+    if (watch) {
+      console.log('Watching for changes...')
+      watchFile(inputPath, { persistent: true, interval: 1000 }, () => {
+        console.log('Input file changed. Converting and writing output...')
+        writeFileSync(outputFilepath, outputContent, 'utf8')
+        console.log(`Output written to ${outputFilepath}`)
+      })
+    } else {
+      writeFileSync(outputFilepath, outputContent, 'utf8')
+      console.log(`Output written to ${outputFilepath}`)
+    }
   } catch (err) {
     console.error('Error processing:', err)
   }
