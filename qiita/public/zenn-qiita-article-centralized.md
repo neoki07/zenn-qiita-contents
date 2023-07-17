@@ -1,12 +1,12 @@
 ---
 title: Zenn / Qiitaに投稿する同じ記事を一元管理するGitHubリポジトリを作りました
-private: false
 tags:
-  - zenn
-  - zenncli
-  - qiita
-  - github
-updated_at: '2023-07-17T21:41:49+09:00'
+  - Qiita
+  - GitHub
+  - Zenn
+  - ZennCLI
+private: false
+updated_at: '2023-07-17T21:53:09+09:00'
 id: 448b304bb9df66e545f8
 organization_url_name: null
 ---
