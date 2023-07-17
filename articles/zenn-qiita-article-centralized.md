@@ -1,5 +1,5 @@
 ---
-title: Zenn / Qiitaに投稿する同じ記事を一元管理するためのGitHubリポジトリを作りました
+title: Zenn / Qiitaに投稿する同じ記事を一元管理するGitHubリポジトリを作りました
 emoji: 📝
 type: tech
 topics:
