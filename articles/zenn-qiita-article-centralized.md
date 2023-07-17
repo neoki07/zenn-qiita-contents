@@ -7,7 +7,7 @@ topics:
   - zenncli
   - qiita
   - github
-published: false
+published: true
 ---
 
 ## はじめに
