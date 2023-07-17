@@ -1,8 +1,11 @@
 ---
-title: 'Astroファイルのimport文をフォーマットするPrettierプラグインを作りました'
-emoji: '🧑‍🚀'
-type: 'tech'
-topics: ['prettier', 'astro', 'npm']
+title: Astroファイルのimport文をフォーマットするPrettierプラグインを作りました
+emoji: 🧑‍🚀
+type: tech
+topics:
+  - prettier
+  - astro
+  - npm
 published: true
 ---
 
