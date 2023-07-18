@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'fs'
 import matter from 'gray-matter'
 import yaml from 'js-yaml'
+import { topicToTag } from './topic-to-tag'
 
 export function convertFrontmatter(outputPath?: string) {
   return function _convertFrontmatter(inputContent: string) {
@@ -16,7 +17,7 @@ export function convertFrontmatter(outputPath?: string) {
     delete dataCloned.published
 
     // Convert topics to tags
-    dataCloned.tags = dataCloned.topics
+    dataCloned.tags = dataCloned.topics.map(topicToTag)
     delete dataCloned.topics
 
     // Add new fields
