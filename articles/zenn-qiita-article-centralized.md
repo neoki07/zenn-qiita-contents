@@ -6,6 +6,7 @@ topics:
   - zenn
   - zenncli
   - qiita
+  - qiitacli
   - github
 published: true
 ---
